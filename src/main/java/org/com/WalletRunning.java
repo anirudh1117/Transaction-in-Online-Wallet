@@ -10,6 +10,7 @@ public class WalletRunning {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext ctx = SpringApplication.run(WalletRunning.class,args);
+		System.out.println("sprint boot server running...");
 		/*WalletRepository dao = ctx.getBean(WalletRepository.class);
 		WalletUser user[] = new WalletUser[3];
 		String name[]= {"ram","sam","kam"};

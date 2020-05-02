@@ -74,7 +74,9 @@ public class TransactionController {
 
 	@RequestMapping("/SearchByName/{name}")
 	public ResponseEntity<?> searchByName(@PathVariable("name") String name) {
-		return new ResponseEntity(service.SerachByname(name), HttpStatus.OK);
+		if(name.isEmpty())
+			name="";
+	    return new ResponseEntity(service.SerachByname(name), HttpStatus.OK);
 	}
 
 	@RequestMapping("/getBalance/{id}")

@@ -1,8 +1,9 @@
 package org.com.services;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
-
+import java.util.HashMap;
 import org.com.dao.AccountRepository;
 import org.com.dao.TransactionRepository;
 import org.com.dao.UserRepository;
@@ -59,9 +60,17 @@ public class TransactionService {
 		return tdao.findAll();
 	}
 	
-	public List<WalletUser> SerachByname(String name){
+	public List<String> SerachByname(String name){
 		name = name.toLowerCase();
-		return udao.findByName(name);
+		List<String> namelist = new ArrayList<>();
+		//HashMap<Integer,String> hash = new HashMap<>();
+		List<WalletUser> list = udao.findByName(name);
+		for(WalletUser user:list) {
+			String str = user.getUserName()+" (" +user.getWalletAccount().getAccountId()+")";
+			//hash.put(user.getWalletAccount().getAccountId(), user.getUserName());
+			namelist.add(str);
+		}
+		return namelist;
 	}
 	
 	public double getBalance(int id) {
